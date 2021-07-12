@@ -109,4 +109,46 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/phpstorm
 
-.idea/
+# yii console commands
+second/yii
+second/yii_test
+second/yii_test.bat
+
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+second/Thumbs.db
+
+# composer vendor dir
+second/vendor
+
+# composer itself is not needed
+second/composer.phar
+
+# Mac DS_Store Files
+second/.DS_Store
+
+# phpunit itself is not needed
+second/phpunit.phar
+# local phpunit config
+second/phpunit.xml
+
+# vagrant runtime
+second/.vagrant
+
+# ignore generated files
+second/frontend/web/index.php
+second/frontend/web/index-test.php
+second/frontend/web/robots.txt
+second/backend/web/index.php
+second/backend/web/index-test.php
+second/backend/web/robots.txt

@@ -12,6 +12,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'container' => require __DIR__ . '/container.php',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -34,17 +35,15 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => true,
             'rules' => [
+                '<controller:(api)>' => '<controller>/index',
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

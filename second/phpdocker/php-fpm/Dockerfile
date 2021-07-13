@@ -1,5 +1,5 @@
 FROM phpdockerio/php74-fpm:latest
-WORKDIR "/application"
+WORKDIR /application
 
 # Install php
 RUN apt-get update; \
@@ -16,6 +16,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
         echo "alias composer='composer'" >> /root/.bashrc && \
         composer
 
-COPY ./ /application
-
-RUN composer install --prefer-source --no-interaction
+COPY ./ /application/s

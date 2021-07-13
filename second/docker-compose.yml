@@ -28,7 +28,9 @@ services:
             PHP_IDE_CONFIG: "serverName=per.pan"
 
     php-fpm:
-        build: phpdocker/php-fpm
+        build:
+            context: .
+            dockerfile: ./phpdocker/php-fpm/Dockerfile
         working_dir: /application
         volumes:
             - '.:/application'

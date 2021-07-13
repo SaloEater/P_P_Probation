@@ -1,4 +1,7 @@
 FROM phpdockerio/php74-fpm:latest
+
+COPY ./composer.json /application/
+
 WORKDIR /application
 
 # Install php
@@ -16,4 +19,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
         echo "alias composer='composer'" >> /root/.bashrc && \
         composer
 
-COPY ./ /application/s
+RUN composer install --prefer-source --no-interaction

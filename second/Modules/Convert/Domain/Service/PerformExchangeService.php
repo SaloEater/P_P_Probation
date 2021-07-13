@@ -36,8 +36,8 @@ class PerformExchangeService
         $direction = $this->getDirection($exchange);
         $rate = $this->getRate($direction, $exchange);
         $commissionedRate = new CommissionedRate($this->commissionFee->getFee());
+        $rate = $commissionedRate->calculate($rate);
         $convertedValue = $commissionedRate->calculate($rate * $exchange->getValue());
-        $convertedValue = $this->roundValue($direction, $convertedValue);
         return new PerformedExchange(
             $exchange->getFrom(),
             $exchange->getTo(),

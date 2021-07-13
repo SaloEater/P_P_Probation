@@ -73,7 +73,7 @@ class ApiController extends Controller
             return $this->failure();
         }
         try {
-            $exchange = $this->exchangeDtoFromRequest->getDtoFromBody();
+            $exchange = $this->exchangeDtoFromRequest->getDtoFromQuery();
             $data = $this->performExchangeService->performExchange($exchange);
             return $this->success($data->toArray());
         } catch (\Exception $e) {

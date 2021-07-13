@@ -19,7 +19,7 @@ class SpecifiedCurrencyListService
 
     public function getList(): SpecifiedCurrency
     {
-        return $this->getFromParam($this->request->getParams()[self::CURRENCY_LIST_PARAM] ?? '');
+        return $this->getFromParam($this->request->getQuery()[self::CURRENCY_LIST_PARAM] ?? '');
     }
 
     private function getFromParam(string $rawCurrencyList): SpecifiedCurrency

@@ -7,5 +7,10 @@ interface RequestInterface
     /**
      * @return array
      */
-    public function getParams(): array;
+    public function getQuery(): array;
+
+    /**
+     * @return array
+     */
+    public function getPost(): array;
 }

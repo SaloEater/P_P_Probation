@@ -55,6 +55,9 @@ class ApiController extends Controller
 
     private function actionRates(): object
     {
+        if (!$this->request->isGet) {
+            return $this->failure();
+        }
         try {
             $specifiedCurrency = $this->specifiedCurrencyListService->getList();
             $list = $this->getRatesList->getList($specifiedCurrency);
@@ -66,10 +69,13 @@ class ApiController extends Controller
 
     private function actionConvert(): object
     {
+        if (!$this->request->isPost) {
+            return $this->failure();
+        }
         try {
-            $exchange = $this->exchangeDtoFromRequest->getDto();
+            $exchange = $this->exchangeDtoFromRequest->getDtoFromBody();
             $data = $this->performExchangeService->performExchange($exchange);
-            return $this->success($data);
+            return $this->success($data->toArray());
         } catch (\Exception $e) {
             return $this->failure();
         }

@@ -10,8 +10,13 @@ class YiiRequestService implements RequestInterface
     /**
      * @inheritDoc
      */
-    public function getParams(): array
+    public function getQuery(): array
     {
         return Yii::$app->request->get() ?? [];
+    }
+
+    public function getPost(): array
+    {
+        return Yii::$app->request->post() ?? [];
     }
 }

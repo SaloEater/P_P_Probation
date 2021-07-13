@@ -9,5 +9,10 @@ interface GetExchangeDtoFromRequestInterface
     /**
      * @return Exchange
      */
-    public function getDto(): Exchange;
+    public function getDtoFromQuery(): Exchange;
+
+    /**
+     * @return Exchange
+     */
+    public function getDtoFromBody(): Exchange;
 }

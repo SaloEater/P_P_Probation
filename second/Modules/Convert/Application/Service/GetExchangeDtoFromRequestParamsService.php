@@ -2,6 +2,7 @@
 
 namespace Modules\Convert\Application\Service;
 
+use Exception;
 use Modules\Convert\Application\Contract\GetExchangeDtoFromRequestInterface;
 use Modules\Convert\Domain\Dto\Exchange;
 use Modules\Core\Domain\Request\RequestInterface;
@@ -19,14 +20,33 @@ class GetExchangeDtoFromRequestParamsService implements GetExchangeDtoFromReques
         $this->request = $request;
     }
 
-    public function getDto(): Exchange
+    /**
+     * @return Exchange
+     * @throws Exception
+     */
+    public function getDtoFromQuery(): Exchange
     {
-        $params = $this->request->getParams();
+        $params = $this->request->getQuery();
+        return $this->getFromArray($params);
+    }
+
+    /**
+     * @return Exchange
+     * @throws Exception
+     */
+    public function getDtoFromBody(): Exchange
+    {
+        $params = $this->request->getPost();
+        return $this->getFromArray($params);
+    }
+
+    private function getFromArray(array $params): Exchange
+    {
         $from = $params[self::FROM_PARAM] ?? null;
         $to = $params[self::TO_PARAM] ?? null;
         $value = $params[self::VALUE_PARAM] ?? null;
         if (!$from || !$to || !$value) {
-            throw new \Exception();
+            throw new Exception();
         }
         return new Exchange($from, $to, $value);
     }
